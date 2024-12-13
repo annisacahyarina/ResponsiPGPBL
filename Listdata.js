@@ -33,6 +33,19 @@ const Listdata = () => {
             .finally(() => setLoading(false));
     }
 
+    function deleteData(id) {
+        fetch(jsonUrl + '/' + id, {
+          method: 'DELETE',
+        })
+          .then((response) => response.json())
+          .then((json) => {
+            console.log(json);
+            alert('Data terhapus');
+            refreshPage();
+          })
+       }
+       
+
     return (
         <SafeAreaView>
             {isLoading ? (
@@ -65,6 +78,17 @@ const Listdata = () => {
                                     </View>
                                 </TouchableOpacity>
 
+                                <View style={styles.form}>
+                                    <Button title="Hapus"
+                                        onPress={() => Alert.alert('Hapus data', 'Yakin akan menghapus data ini?', [
+                                            { text: 'Tidak', onPress: () => console.log('button tidak') },
+                                            { text: 'Ya', onPress: () => deleteData(item.id) },
+                                        ])}
+                                        color={'red'}
+                                    />
+                                </View>
+
+
                             </View>
                         )}
                     />
@@ -79,20 +103,20 @@ const Listdata = () => {
 
 const styles = StyleSheet.create({
     title: {
-      paddingVertical: 12,
-      backgroundColor: '#333',
-      color: 'white',
-      fontSize: 20,
-      fontWeight: 'bold',
-      textAlign: 'center',
+        paddingVertical: 12,
+        backgroundColor: '#333',
+        color: 'white',
+        fontSize: 20,
+        fontWeight: 'bold',
+        textAlign: 'center',
     },
     avatar: {
-      borderRadius: 100,
-      width: 80,
+        borderRadius: 100,
+        width: 80,
     },
     cardtitle: {
-      fontSize: 14,
-      fontWeight: 'bold',
+        fontSize: 14,
+        fontWeight: 'bold',
     },
     card: {
         flexDirection: 'row',
@@ -101,21 +125,21 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         shadowColor: '#000',
         shadowOffset: {
-          width: 1,
-          height: 1,
+            width: 1,
+            height: 1,
         },
         shadowOpacity: 0.20,
         shadowRadius: 1.41,
         elevation: 2,
         marginHorizontal: 20,
         marginVertical: 7
-      },
-      form: {
+    },
+    form: {
         paddingHorizontal: 20,
         paddingTop: 5,
         paddingBottom: 20,
-      },
-     })
-        
+    },
+})
+
 
 export default Listdata

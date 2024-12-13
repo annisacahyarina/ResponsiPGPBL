@@ -8,9 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { WebView } from 'react-native-webview';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faUserGraduate} from "@fortawesome/free-solid-svg-icons";
+import { faPlusCircle, faUserGraduate, faUserPen} from "@fortawesome/free-solid-svg-icons";
 import Createdata from './Createdata';
 import Datamahasiswa from './Listdata';
+import Editdata from './Editdata';
 
 function HomeScreen() {
   return (
@@ -24,12 +25,9 @@ function DataMahasiswaScreen() {
   );
 }
 
-function WebScreen() {
+function Editscreen() {
   return (
-    <WebView
-        source={{ uri: 'https://github.com/annisacahyarina' }}
-        style={{ marginTop: 20 }}
-      />
+    <Editdata/>
   );
 }
 
@@ -39,9 +37,9 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator>
-        <Tab.Screen name="Input" component={HomeScreen} options={{ headerShown: false,
+        <Tab.Screen name="Tambah" component={HomeScreen} options={{ headerShown: false,
           tabBarIcon: ({ color, size }) => (
-            <FontAwesomeIcon icon={faUser} color={color} size={20} />
+            <FontAwesomeIcon icon={faPlusCircle} color={color} size={20} />
           ),
          }} 
          />
@@ -52,10 +50,10 @@ export default function App() {
           ),
          }}  
          />
-        <Tab.Screen name="GitHub" component={WebScreen}
+        <Tab.Screen name="Edit" component={Editscreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesomeIcon icon={faGithub} color={color} size={20} />
+            <FontAwesomeIcon icon={faUserPen} color={color} size={20} />
           ),
          }}  
          />
