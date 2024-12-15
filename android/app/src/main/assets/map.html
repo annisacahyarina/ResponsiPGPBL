@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Peta Leaflet</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <style>
+        
+        .leaflet-popup-content form {
+            display: flex;
+            flex-direction: column;
+        }
+        .leaflet-popup-content input[type="text"] {
+            margin-bottom: 10px;
+        }
+        /* Background pada Judul */
+        .info {
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .info h2 {
+            margin: 0 0 6px;
+            color: #777;
+        }
+           /* CSS untuk tombol pencarian */
+           .leaflet-control-geocoder {
+            position: absolute;
+            top: 100px;
+           right: 190px;
+            z-index: 1000;
+           
+        }
+        
+
+    </style>
+</head>
+<body>
+   
+  <div id="map" style="height: 100vh;"></div>
+  
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+    <script>
+        // Inisialisasi peta
+        var map = L.map('map').setView([-7.7956, 110.3695], 13); 
+
+        var basemap1 = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '<a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> | <a href="DIVSIG UGM" target="_blank">DIVSIG UGM</a>'
+        });
+        var basemap2 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{ z } / { y } / { x }',
+            {
+                attribution: 'Tiles &copy; Esri | <a href="Latihan WebGIS" target="_blank">DIVSIG UGM</a>'
+            });
+
+        var basemap3 = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{ z } / { y } / { x }',
+            {
+                attribution: 'Tiles &copy; Esri | <a href="Lathan WebGIS" target="_blank">DIVSIG UGM</a>'
+            });
+
+        basemap1.addTo(map);
+
+        //judul
+        var title = new L.Control();
+        title.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info');
+            this.update();
+            return this._div;
+        };
+        title.update = function () {
+            this._div.innerHTML = '<h2>TrashSnap</h2>klik lokasinya dan isi formnya!'
+        };
+        title.addTo(map);
+
+    </script>
+
+<script>
+    /* Control Layer */
+    var baseMaps = {
+        "OpenStreetMap": basemap1,
+        "Esri World Street": basemap2,
+        "Esri Imagery": basemap3,
+    };
+    
+    L.control.layers(baseMaps).addTo(map);
+    
+      // Fungsi untuk menampilkan marker dari JSON Server
+      function loadMarkers() {
+            fetch('http://10.0.2.2:3000/sampah')
+                .then(response => response.json())
+                .then(data => {
+                    data.forEach(item => {
+                        L.marker([item.lat, item.lng])
+                            .addTo(map)
+                            .bindPopup(`<strong>${item.name}</strong><br>Lat: ${item.lat}<br>Lng: ${item.lng}   <button onclick="deleteMarker(${item.id}, this)">Hapus</button>`);
+                    });
+                })
+                .catch(error => console.error('Error fetching data:', error));
+        }
+
+        // Panggil fungsi untuk memuat marker yang sudah ada
+        loadMarkers();
+
+        
+
+        // Fungsi untuk menambahkan marker baru dan menyimpan ke JSON Server
+        function onMapClick(e) {
+            var popup = L.popup()
+                .setLatLng(e.latlng)
+                .setContent(`
+                    <form id="popupForm">
+                        <label for="first_name">Nama:</label>
+                        <input type="text" id="first_name" name="first_name" required />
+
+                        <label for="jenis_sampah">Jenis sampah:</label>
+                        <input type="text" id="jenis_sampah" name="jenis_sampah" required />
+
+                        <label for="alamat">Alamat:</label>
+                        <input type="text" id="alamat" name="alamat" required />
+
+                        <label for="keterangan">Keterangan tambahan:</label>
+                        <input type="text" id="keterangan" name="keterangan" required />
+
+                        <label for="foto">Upload Foto:</label>
+                <input type="file" id="foto" name="foto" accept="image/*" /><br>
+
+
+                        <button type="submit">Simpan</button>
+                    </form>
+                `)
+                .openOn(map);
+
+            // Tambahkan event listener untuk form submit
+            document.getElementById('popupForm').addEventListener('submit', function(event) {
+                event.preventDefault();
+                var first_name = document.getElementById('first_name').value;
+                var jenis_sampah = document.getElementById('jenis_sampah').value;
+                var alamat = document.getElementById('alamat').value;
+                var keterangan = document.getElementById('keterangan').value;
+                
+                // Buat marker di lokasi klik
+                L.marker(e.latlng).addTo(map).bindPopup(`
+                    <strong>${name}</strong><br>
+                    Jenis Sampah: ${jenis_sampah}<br>
+                    Alamat: ${alamat}<br>
+                    Keterangan: ${keterangan}<br>
+                `)
+                .openPopup();
+
+
+                // Simpan data ke JSON Server
+                fetch('http://10.0.2.2:3000/sampah', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                      first_name: first_name,
+                    jenis_sampah: jenis_sampah,
+                    alamat: alamat,
+                    keterangan: keterangan,
+                        lat: e.latlng.lat,
+                        lng: e.latlng.lng
+                    }),
+                }).then(response => response.json())
+                .then(data => {
+                    console.log('Data tersimpan:', data);
+                }).catch((error) => {
+                    console.error('Error:', error);
+                });
+            });
+        }
+
+        // Event listener untuk klik pada peta
+        map.on('click', onMapClick);
+
+
+// Panggil fungsi untuk memuat marker dari data yang sudah ada
+function loadMarkers() {
+    fetch('http://10.0.2.2:3000/sampah')
+        .then(response => response.json())  // Parsing response ke JSON
+        .then(data => {
+            // Looping melalui data untuk menambahkan marker ke peta
+            data.forEach(item => {
+                // Pastikan ada lat dan lng
+                if (item.lat && item.lng) {
+                    // Tambahkan marker ke peta
+                    L.marker([item.lat, item.lng])
+                        .addTo(map)
+                        .bindPopup(`
+                            <strong>${item.first_name}</strong><br>
+                            Jenis Sampah: ${item.jenis_sampah}<br>
+                            Alamat: ${item.alamat}<br>
+                            Keterangan: ${item.keterangan}<br>
+                          <img src="${item.foto}" alt="Gambar Sampah" style="width:100px; height:auto; display: block; margin-left: auto; margin-right: auto;" />
+
+                        `);
+                } else {
+                    console.error('Koordinat tidak valid untuk:', item);
+                }
+            });
+        })
+        .catch(error => {
+            console.error('Gagal mengambil data:', error);
+        });
+}
+
+// Panggil fungsi loadMarkers ketika peta dimuat
+loadMarkers();
+// Fungsi untuk menghapus marker
+function deleteMarker(id, button) {
+          // Hapus marker dari server JSON
+          fetch(`http://10.0.2.2:3000/sampah/${id}`, {
+              method: 'DELETE'
+          }).then(response => {
+              if (response.ok) {
+                  // Hapus marker dari peta
+                  var markerPopup = button.closest('.leaflet-popup');
+                  var marker = markerPopup._source;
+                  map.removeLayer(marker);
+                  map.closePopup(markerPopup);
+              }
+          }).catch(error => console.error('Error menghapus marker:', error));
+      }
+// Event listener untuk klik pada peta
+map.on('click', onMapClick);
+
+    </script>
+
+<script>
+  /* Scale Bar */
+  L.control.scale({
+      maxWidth: 150, position: 'bottomright'
+  }).addTo(map);
+  
+// Tombol Pencarian (Geocoder)
+var geocoder = L.Control.Geocoder.nominatim();
+    var searchControl = new L.Control.Geocoder({
+        geocoder: geocoder
+    }).addTo(map);
+
+
+
+    
+    
+  </script>
+
+  
+  
+  
+</body>
+</html>

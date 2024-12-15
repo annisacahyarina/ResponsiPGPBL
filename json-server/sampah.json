@@ -1,0 +1,54 @@
+{
+  "sampah": [
+    {
+      "id": "0073",
+      "first_name": "Annisa",
+      "jenis_sampah": "Rumah tangga",
+      "alamat": "Jalan Kenari",
+      "keterangan": "Dekat dengan Stadion Mandala Krida",
+      "lat": -7.797571892204109,
+      "lng": 110.38296775713432,
+      "foto": "https://asset.kompas.com/crops/glLzZ8NTVmMnpK5dbJapTwuvADk=/0x0:0x0/1200x800/data/photo/2024/06/19/667282a76890b.jpg"
+    },
+    {
+      "id": "e412",
+      "first_name": "NUsantara",
+      "jenis_sampah": "Plastik",
+      "alamat": "Gondokusuman",
+      "keterangan": "Dekat Balai Yasa Yogyakarta",
+      "lat": -7.786855648398189,
+      "lng": 110.38350393320283,
+      "foto": "https://cdn-assetd.kompas.id/JasS7Raju1V0WaFIxVXN824WJtk=/1280x721/filters:watermark(https://cdn-content.kompas.id/umum/kompas_main_logo.png,-16p,-13p,0)/https%3A%2F%2Fasset.kgnewsroom.com%2Fphoto%2Fpre%2F2024%2F05%2F13%2F92ef2254-0535-48fd-a60d-686cc0b0d34b_jpg.jpg"
+    },
+    {
+      "id": "694b",
+      "first_name": "Nusantara",
+      "jenis_sampah": "Rumah tangga",
+      "alamat": "Gondolayu Kidul Jetis",
+      "keterangan": "Sangat mengganggu dekat dengan permukiman",
+      "lat": -7.782149315514013,
+      "lng": 110.36909222595241,
+      "foto": "https://cdn-assetd.kompas.id/o9wAENX7eXXlhHlSaBvwVMeMl8I=/1280x724/filters:watermark(https://cdn-content.kompas.id/umum/kompas_main_logo.png,-16p,-13p,0)/https%3A%2F%2Fasset.kgnewsroom.com%2Fphoto%2Fpre%2F2024%2F05%2F13%2F6babf618-93c8-4a9c-a75e-4b6bf0dc0a09_jpg.jpg"
+    },
+    {
+      "id": "b318",
+      "first_name": "Tirto",
+      "jenis_sampah": "Rumah tangga",
+      "alamat": "Jalan Suryowijan",
+      "keterangan": "Plengkungan Taman Sari",
+      "lat": -7.821241462613198,
+      "lng": 110.35315836136198,
+      "foto": "https://mmc.tirto.id/image/otf/970x0/2024/08/08/onggokan-sampah-di-plengkung-tamansari-02_ratio-16x9.jpg"
+    },
+    {
+      "id": "1b5d",
+      "first_name": "Harian Jogja",
+      "jenis_sampah": "Rumah tangga",
+      "alamat": "Gondokusuman",
+      "keterangan": "Lokasi renovasi pasar terban",
+      "lat": -7.781584629833937,
+      "lng": 110.37249400756905,
+      "foto":"https://img.harianjogja.com/posts/2024/09/11/1187840/sampah_terban.jpg"
+    }
+  ]
+}

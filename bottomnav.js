@@ -10,6 +10,10 @@ import Mahasiswa from './Mahasiswa';
 import { WebView } from 'react-native-webview';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUserGraduate} from "@fortawesome/free-solid-svg-icons";
+import MapScreen from './Map';
+
+
+const map = 'https://annisacahyarina.github.io/annisacahyarina.github.io/map.html';
 
 function HomeScreen() {
   return (
@@ -20,6 +24,11 @@ function HomeScreen() {
 function DataMahasiswaScreen() {
   return (
     <Mahasiswa/>
+  );
+}
+function Map() {
+  return (
+    <MapScreen/>
   );
 }
 
@@ -55,6 +64,13 @@ export default function App() {
         options={{
           tabBarIcon: ({ color, size }) => (
             <FontAwesomeIcon icon={faGithub} color={color} size={20} />
+          ),
+         }}  
+         />
+        <Tab.Screen name="Map" component={MapScreen}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesomeIcon  icon={faGithub} color={color} size={20} />
           ),
          }}  
          />
