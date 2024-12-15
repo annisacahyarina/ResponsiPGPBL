@@ -1,14 +1,12 @@
 # responsi PGPBL
 
 <h2>Nama Produk: TrashSnap</h2>
-
-<h2>Deskripsi produk:</h2>
 Kondisi pengelolaan sampah di Daerah Istimewa Yogyakarta (DIY) saat ini berada dalam situasi kritis. Volume sampah yang terus meningkat akibat dari urbanisasi, aktivitas komersial, dan pariwisata yang tinggi menambah beban pada sistem pengelolaan sampah yang sudah terbatas. Pada tahun 2023, 
 Yogyakarta menghasilkan lebih dari 2.000 ton sampah per hari, dan sebagian besar dari sampah ini berasal dari limbah rumah tangga dan komersial. 
 TPA Piyungan, sebagai tempat pembuangan utama di wilayah ini, sering mengalami masalah kapasitas yang memaksa penutupan sementara. Akibatnya,
 sampah menumpuk di berbagai titik di sekitar kota, menciptakan ancaman serius terhadap kesehatan lingkungan dan kenyamanan masyarakat.
 
-h2>Keunggulan produk: </h2>
+<h2>Keunggulan produk: </h2>
 <ul>
 <li>Pengguna dapat berkontribusi dengan melaporkan lokasi sampah di halaman lapor</li>
 <li>Peta untuk menampilkan persebaran sampah yang telah dilaporkan</li>
