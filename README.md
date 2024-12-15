@@ -1,5 +1,4 @@
-# responsipgweb2
-#Responsi PGWEB 
+# responsi PGPBL
 
 <h2>Nama Produk: TrashSnap</h2>
 
@@ -8,6 +7,13 @@ Kondisi pengelolaan sampah di Daerah Istimewa Yogyakarta (DIY) saat ini berada d
 Yogyakarta menghasilkan lebih dari 2.000 ton sampah per hari, dan sebagian besar dari sampah ini berasal dari limbah rumah tangga dan komersial. 
 TPA Piyungan, sebagai tempat pembuangan utama di wilayah ini, sering mengalami masalah kapasitas yang memaksa penutupan sementara. Akibatnya,
 sampah menumpuk di berbagai titik di sekitar kota, menciptakan ancaman serius terhadap kesehatan lingkungan dan kenyamanan masyarakat.
+
+h2>Keunggulan produk: </h2>
+<ul>
+<li>Pengguna dapat berkontribusi dengan melaporkan lokasi sampah di halaman lapor</li>
+<li>Peta untuk menampilkan persebaran sampah yang telah dilaporkan</li>
+<li>Halaman data untuk menampilkan data yang telah dilaporkan</li>
+</ul>
 
 <h2>Komponen pembangun produk: </h2>
 <ul>
@@ -25,10 +31,23 @@ sampah menumpuk di berbagai titik di sekitar kota, menciptakan ancaman serius te
 
 <h2>Tangkapan layar komponen penting produk:</h2>
 <ul>
-  <li>Landing page</li><br><img src = "assets/img/referensi/landingpage.png" width = "500"><br>
-   <li>Peta persebaran restoran gudeg</li><br><img src = "assets/img/referensi/peta.png" width = "500"><br>
-   <li>Basisdata PHPMyAdmin</li><br><img src = "assets/img/referensi/database.png" width = "500"><br>
-  <img src = "assets/img/referensi/database2.png" width = "500">
+  <li>Halaman Tentang Aplikasi</li><br>
+  ![Cuplikan layar 2024-12-16 030342](https://github.com/user-attachments/assets/0b62c603-1797-46b9-ab30-000b8bb00db4)
+  <br>
+  <li>Halaman Data</li><br>
+  ![image](https://github.com/user-attachments/assets/43f70fd5-3612-4f36-bc08-e74eb2c6bd5f)
+  <br>
+   <li>Halaman Lapor</li><br>
+  ![Cuplikan layar 2024-12-16 030416](https://github.com/user-attachments/assets/7e5e6160-541b-47ae-9192-24dd1a9f4218)
+<br>
+   <li>Halaman Peta</li><br>
+  ![Cuplikan layar 2024-12-16 030356](https://github.com/user-attachments/assets/a5ac68be-558c-421c-b794-5cb8b94348fb)
+
+<br>
+   <li>Tampilan Pop up</li><br>
+ ![Cuplikan layar 2024-12-16 030408](https://github.com/user-attachments/assets/732c0955-ab63-40a1-94d1-e9f271d974c5)
+<br>
+  
 </ul>
 
 
